@@ -8,7 +8,7 @@
     position: relative;
     width: var(--menu-bar-width);
     height: var(--menu-bar-height);
-    margin: 100px;
+    transition: all 0.15s ease-in-out;
 }
 
 #menu::before,
@@ -19,6 +19,7 @@
     width: var(--menu-bar-width);
     height: var(--menu-bar-height);
     position: absolute;
+    transition: all 0.35s ease-in-out;
 }
 
 #menu::before {
@@ -28,5 +29,38 @@
 
 #menu::after {
     left: 0;
-    top: 20px;
+    /*top: 20px mag ook! Komt op hetzelfde neer, want het is telkens 20px vanaf de boven of onderkant*/
+    bottom: -20px;
+}
+
+#container {
+    /*border: 1px solid red;*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+
+    /* shorthand voor:
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 0;
+    padding-right: 0;
+     */
+    padding: 20px 0;
+}
+
+#container:hover #menu {
+    background-color: transparent;
+}
+
+#container:hover #menu::before {
+    transform: rotate(45deg);
+    /*Het is belangrijk om hier dezelfde property te bewerken als op #menu::before (dus allebei top, of allebei bottom) anders draait het kruisje niet goed vanuit het midden! */
+    top: 0;
+}
+
+#container:hover #menu::after {
+    transform: rotate(-45deg);
+    /*Het is belangrijk om hier dezelfde property te bewerken als op #menu::before (dus allebei top, of allebei bottom) anders draait het kruisje niet goed vanuit het midden! */
+    bottom: 0;
 }
