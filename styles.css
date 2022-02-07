@@ -1,24 +1,35 @@
 :root {
     --menu-bar-width: 60px;
     --menu-bar-height: 10px;
+    --menu-bar-color: 336, 63%, 52%;
+}
+
+#container{
+    display: block;
+    position: relative;
+    width: var(--menu-bar-width);
+    padding-top: calc(var(--menu-bar-height) * 2);
+    padding-bottom: calc(var(--menu-bar-height) * 2);
 }
 
 #menu {
-    background-color: #D84282;
+    background-color: hsl(var(--menu-bar-color));
     position: relative;
     width: var(--menu-bar-width);
     height: var(--menu-bar-height);
-    margin: 100px;
+    display: block;
+    transition: all .3s ease-in-out;
 }
 
 #menu::before,
 #menu::after {
-    background-color: #D84282;
+    background-color: hsl(var(--menu-bar-color));
     display: block;
     content: "";
     width: var(--menu-bar-width);
     height: var(--menu-bar-height);
     position: absolute;
+    transition: all .3s ease-in-out;
 }
 
 #menu::before {
@@ -29,4 +40,18 @@
 #menu::after {
     left: 0;
     top: 20px;
+}
+
+#container:hover #menu {
+    background-color: hsla(var(--menu-bar-color), 0);
+}
+
+#container:hover #menu::before{
+    top:50%;
+    transform: rotate(45deg);
+}
+
+#container:hover #menu::after{
+    top:50%;
+    transform: rotate(-45deg);
 }
